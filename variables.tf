@@ -1,21 +1,32 @@
 variable "aws_region" {
-  description = "The AWS region where resources will be created"
-  type        = string
+  description = "The AWS region to deploy resources."
   default     = "us-east-1"
 }
 
-variable "subnet_id" {
-  description = "The ID of the subnet where the ECS tasks will be deployed"
-  type        = string
-}
-
-variable "security_group_id" {
-  description = "The ID of the security group for the ECS tasks"
-  type        = string
-}
-
 variable "docker_image_repo" {
-  description = "The URI of the Docker image repository in ECR"
-  type        = string
+  description = "The ECR repository URI for the Docker image."
+  default     = "123456789012.dkr.ecr.us-east-1.amazonaws.com/your-docker-image"
 }
 
+variable "subnets" {
+  description = "A list of subnet IDs to deploy the ECS service into."
+  type        = list(string)
+  default     = ["subnet-12345678", "subnet-87654321"]
+}
+
+variable "security_groups" {
+  description = "A list of security group IDs to associate with the ECS service task."
+  type        = list(string)
+  default     = ["sg-0123456789abcdef0"]
+}
+
+variable "lb_security_groups" {
+  description = "A list of security group IDs to associate with the load balancer."
+  type        = list(string)
+  default     = ["sg-abcdef01234567890"]
+}
+
+variable "vpc_id" {
+  description = "The ID of the VPC where resources will be deployed."
+  default     = "vpc-0123456789abcdef0"
+}

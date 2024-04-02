@@ -5,13 +5,13 @@ variable "aws_region" {
 
 variable "docker_image_repo" {
   description = "The ECR repository URI for the Docker image."
-  default     = "123456789012.dkr.ecr.us-east-1.amazonaws.com/your-docker-image"
+  default     = "56575889012.dkr.ecr.us-east-1.amazonaws.com/myimage"
 }
 
 variable "subnets" {
   description = "A list of subnet IDs to deploy the ECS service into."
   type        = list(string)
-  default     = ["subnet-12345678", "subnet-87654321"]
+  default     = ["subnet-public", "subnet-private"]
 }
 
 variable "security_groups" {
